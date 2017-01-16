@@ -20,8 +20,7 @@ class CreateBooksTable extends Migration
             $table->string('genre');
             $table->string('image');
             $table->integer('likes')->default(0);
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->integer('user_id')->nullable();
             $table->timestamps();
         });
     }
