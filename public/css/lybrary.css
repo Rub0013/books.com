@@ -1,0 +1,218 @@
+.main_books
+{
+    width:80%;
+    margin: 5% auto;
+    display: flex;
+    flex-direction: column;
+}
+.show_books
+{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+    width: 90%;
+    margin: 0 auto;
+}
+.show_books>div
+{
+    position: relative;
+    margin: 10px;
+}
+.show_books>div>img
+{
+    border:1px solid black;
+}
+.show_books>div>div
+{
+    position: absolute;
+    top:0;
+    width: 200px;
+    height: 300px;
+    padding: 15px 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    opacity: 0;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 3px;
+    transition: all 0.4s linear;
+    color: black;
+}
+.show_books>div>div:hover
+{
+    opacity: 1;
+}
+.books_nav
+{
+    align-self: center;
+    margin: 20px 0 20px 0;
+    display: flex;
+}
+.delete_update
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.delete_update>input,#image_name,#updating_books_id
+{
+    display: none;
+}
+.delete_post
+{
+    text-decoration: none;
+    color: black;
+    background: rgba(255, 0, 0, 0.5);
+    width: 40%;
+    text-align: center;
+    padding: 5px;
+    border-radius: 3px;
+    font-weight: bold;
+    border:1px solid rgba(255, 255, 255, 0.80);
+    transition: all 0.2s linear;
+}
+.update_post
+{
+    color: black;
+    background: rgba(56, 139, 66, 0.7);
+    width: 40%;
+    text-align: center;
+    padding: 5px;
+    border-radius: 3px;
+    font-weight: bold;
+    border:1px solid rgba(255, 255, 255, 0.80);
+    transition: all 0.2s linear;
+    cursor: pointer;
+}
+.delete_post:hover,.update_post:hover
+{
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+}
+.nav_lybrary
+{
+    width:50%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+}
+.nav_lybrary>a
+{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: all 0.3s linear;
+}
+.nav_lybrary>a:hover
+{
+    color: #504fff;
+    transform: scale(1.05);
+}
+.likes
+{
+    display:flex;
+}
+.likes_count
+{
+    padding: 5px;
+    background: darkblue;
+    border-radius: 3px;
+    font-size: 1.3em;
+    margin-right: 10px;
+}
+.button
+{
+    padding: 5px;
+    background: rgba(0, 0, 139, 0.71);
+    border:1px solid rgba(0, 0, 139, 0.71);
+    border-radius: 3px;
+}
+.books_id,.users_id
+{
+    display: none;
+}
+.current_page
+{
+    display: inline-block;
+    margin: 0 2px;
+    padding: 5px;
+    background: rgba(139, 4, 6, 0.71);
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    border-radius: 3px;
+}
+#parent_book_update
+{
+    width: 500px;
+    position: fixed;
+    z-index: 2;
+    top: 20%;
+    left: 50%;
+    margin-left: -250px;
+    display: none;
+}
+#book_update
+{
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    width: 100%;
+    background-image: url(../images/add_books/style_img/swirl_pattern.png);
+    border: 1px solid rgba(0, 0, 0, 0.61);
+    border-radius: 3px;
+    padding: 10px;
+}
+#book_update>label
+{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 5px;
+}
+#book_update>label>input
+{
+    padding: 3px;
+    background: rgba(47, 79, 79, 0.6);
+    border:1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 3px;
+    color: whitesmoke;
+    width: 60%;
+}
+#post_update_buttons
+{
+    width: 50%;
+    align-self: flex-end;
+    display: flex;
+    justify-content: space-between;
+}
+#update_button
+{
+    width: 45%;
+    padding: 3px;
+    background: rgba(255, 0, 0, 0.7);
+    border:1px solid  rgba(255, 0, 0, 0.37);
+    border-radius: 3px;
+    margin-right: 5px;
+    color: black;
+    font-weight: bold;
+}
+#cancel_update_button
+{
+    width: 45%;
+    padding: 3px;
+    background: rgba(162, 250, 255, 0.8);
+    border:1px solid rgba(255, 255, 255, 0.81);
+    border-radius: 3px;
+    margin-right: 5px;
+    color: black;
+    font-weight: bold;
+}
+#hidden_update
+{
+    display: none;
+}
+
+
+

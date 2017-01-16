@@ -1,0 +1,132 @@
+.main_chat
+{
+    display: flex;
+    width: 80%;
+    margin: 30px auto;
+    justify-content: space-between;
+}
+#conversation+div
+{
+    display: flex;
+    flex-direction: column;
+}
+#friends
+{
+    width: 250px;
+    overflow: hidden;
+    overflow-y: scroll;
+    background: rgba(250, 252, 255, 0.60);
+    height: 300px;
+    padding-left: 10px;
+}
+#friend_list_search
+{
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 3px;
+    background: rgba(74, 97, 128, 0.71);
+    background-image: url("http://books.com/images/add_books/symbols/loupe2.png");
+    background-repeat: no-repeat;
+    background-position:2% 50%;
+    padding: 10px 10px 10px 26px;
+    height: 26px;
+    color: white;
+    visibility: visible;
+}
+#no_such_friends
+{
+    display: none;
+}
+#current_friend_conversation
+{
+    display: none;
+}
+.friend
+{
+    position: relative;
+    width: 200px;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-top: 15px;
+    display: flex;
+    align-items: center;
+}
+.searched_friends
+{
+    margin-top: 15px;
+}
+.searched_friends>a
+{
+    padding: 2px 5px;
+    background: rgba(71, 128, 128, 0.65);
+    border-radius: 3px;
+    border:1px solid rgba(255, 255, 255, 0.62);
+    display: block;
+    color: black;
+    text-decoration: none;
+    width: 100%;
+    font-size: 0.8em;
+    font-weight: bold;
+}
+.online
+{
+    width: 15px;
+    height: 15px;
+    border:1px solid rgba(255, 255, 255, 0.8);
+    border-radius: 3px;
+}
+.friend>p
+{
+    width: 17px;
+    height: 17px;
+    background: rgba(255, 0, 0, 0.8);
+    border:1px solid rgba(255, 255, 255, 0.62);
+    border-radius: 50%;
+    position: absolute;
+    bottom:35%;
+    left: 88%;
+    font-size: 0.7em;
+    text-align: center;
+    padding: 2px;
+    display: none;
+}
+.friend>a
+{
+    padding: 2px 5px;
+    background: rgba(71, 128, 128, 0.65);
+    border-radius: 3px;
+    border:1px solid rgba(255, 255, 255, 0.62);
+    display: block;
+    color: black;
+    text-decoration: none;
+    width: 100%;
+}
+.fore_note
+{
+    display: none;
+}
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    /*margin: 10px;*/
+    width: 100px;
+    border:1px solid darkblue;
+    font-weight: bold;
+    font-size: 0.9em;
+}
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+#recipient+div
+{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}

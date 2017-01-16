@@ -1,0 +1,256 @@
+*
+{
+    margin:0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body
+{
+    background-image:url(../images/add_books/style_img/wov.png);
+}
+nav
+{
+    background-image:url(../images/add_books/style_img/nav_back.png);
+}
+.nav_parent
+{
+    display: flex;
+    flex-direction: row;
+}
+.nav_home
+{
+    width:72%;
+    display: flex;
+    list-style-type: none;
+    margin: 30px auto;
+    justify-content: space-between;
+}
+.nav_home>li>a
+{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    transition: all 0.3s linear;
+}
+.nav_home>li>a:hover
+{
+    color: #504fff;
+}
+.nav_home>li
+{
+    transition: all 0.3s linear;
+}
+.nav_home>li:hover:not(:last-child)
+{
+    transform: scale(1.2);
+}
+.navbar-nav
+{
+    padding-right: 30px;
+}
+.languages
+{
+    display: flex;
+    list-style-type: none;
+    cursor: pointer;
+    font-weight: bold;
+    padding-left: 30px;
+}
+.languages>li
+{
+    padding: 14px;
+}
+.languages>li>a:hover
+{
+    text-decoration: none;
+}
+#search_book
+{
+    display: flex;
+}
+#search_book>input
+{
+    border-radius: 3px;
+    border:1px solid rgba(0, 0, 0, 0.8);
+    background: rgba(255, 255, 255, 0.3);
+    background-image: url("http://books.com/images/add_books/symbols/loupe.png");
+    background-repeat: no-repeat;
+    background-position:5% 50%;
+    padding-left: 35px;
+    padding-right: 15px;
+    height: 32px;
+}
+#parent_search
+{
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+#search_show
+{
+    position: absolute;
+    border: 1px solid black;
+    border-radius: 3px;
+    width: 100%;
+    top:130%;
+    padding: 5px;
+    z-index: 2;
+    background-image:url(../images/add_books/style_img/nav_back.png);
+    display: none;
+}
+#search_show>ul
+{
+    display: flex;
+    flex-direction: column;
+    list-style-type: none;
+}
+#search_show>ul>li
+{
+    color: black;
+    font-family: sans-serif;
+    font-weight: bold;
+    transition: all 0.2s linear;
+}
+#search_show>ul>li:hover
+{
+    background: rgba(245, 245, 245, 0.6);
+}
+#search_show>ul>li>a
+{
+    padding: 3px;
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    font-family: sans-serif;
+}
+.row
+{
+    margin-top: 30px;
+}
+#main_note,#main_request
+{
+    position: relative;
+}
+#main_note>p,#main_request>p
+{
+    position: absolute;
+    bottom:45%;
+    left: 100%;
+    border:1px solid black;
+    border-radius: 5px;
+    padding: 1px;
+    color: #ff4711;
+    text-align: center;
+}
+.dropdown>a
+{
+    font-weight: bold;
+}
+#calendar
+{
+    max-width: 960px;
+    margin:20px auto;
+}
+#calendar .fc-today
+{
+    background: rgba(100, 149, 237, 0.8);
+}
+#calendar .fc-day
+{
+    transition: all 0.2s linear;
+}
+#calendar .fc-day:hover
+{
+    background: rgba(166, 219, 237, 0.8);
+}
+#main_profile
+{
+    display: flex;
+    width: 90%;
+    padding:20px;
+    position: relative;
+}
+#general_info
+{
+    margin-: 30px;
+    background: rgba(166, 219, 237, 0.6);
+    border-radius: 3px;
+    padding: 10px;
+    color: black;
+    width: 40%;
+}
+#general_info>h2
+{
+    font-weight: bold;
+}
+#general_info>div
+{
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+#general_info>div>p
+{
+    font-weight: bold;
+}
+#general_info>div>b
+{
+    color: #1f648b;
+}
+#update_profile
+{
+    margin-top: 20px;
+    background: rgba(0, 128, 0, 0.8);
+    border-radius: 3px;
+    border: 1px solid rgba(245, 245, 245, 0.8);
+    padding: 5px;
+    font-weight: bold;
+    color: whitesmoke;
+    float: right;
+}
+#div_update
+{
+    display: flex;
+    flex-direction: column;
+    background: rgba(65, 118, 128, 0.81);
+    border-radius: 3px;
+    border: 1px solid rgba(245, 245, 245, 0.8);
+    padding: 20px;
+    width: 30%;
+    position: absolute;
+    left: 45%;
+    display: none;
+}
+#div_update>input
+{
+    width: 100%;
+    border-radius: 3px;
+    border: 1px solid rgba(245, 245, 245, 0.8);
+    background: rgba(77, 118, 128, 0.51);
+    padding: 5px;
+    margin-bottom: 10px;
+    color: whitesmoke;
+}
+#div_update>input+div
+{
+    align-self: flex-end;
+}
+#div_update>input+div>button
+{
+    padding: 5px;
+    border-radius: 3px;
+    border: 1px solid rgba(245, 245, 245, 0.8);
+    color: whitesmoke;
+}
+#cancel_info
+{
+    background: rgba(139, 0, 0, 0.8);
+}
+#submit_info
+{
+    background: rgba(0, 100, 0, 0.81);
+}
+#selected {
+    background: rgba(245, 245, 245, 0.6);
+}
+
