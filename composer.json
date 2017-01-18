@@ -10,7 +10,7 @@
         "doctrine/dbal":"*",
         "intervention/image": "^2.3",
         "laravel/socialite": "^2.0",
-        "guzzlehttp/guzzle": "~4.0",
+        "guzzlehttp/guzzle": "~6.0",
         "barryvdh/laravel-dompdf": "^0.7.0"
     },
     "require-dev": {

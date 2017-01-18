@@ -14,6 +14,11 @@
         <div class="issues"></div>
     </div>
     <div class="main_div">
+        @if(isset($messages))
+        @foreach($messages as $message)
+            $message;
+            @endforeach
+        @endif
         <div class="form">
             <label>
                 <p>Name of the book</p>
@@ -89,6 +94,9 @@
                                     location.assign('http://books.com/{{App::getLocale()}}/lybrary');
                                 }
                                 setTimeout(l_href,1500);
+                            } if(answer=='notadded'){
+                                $('.issues').html('You have no such permission');
+                                $('.issues').css({'background':'red','visibility':'visible','color':'rgb(255, 255, 255)'});
                             }
                         }
                     });

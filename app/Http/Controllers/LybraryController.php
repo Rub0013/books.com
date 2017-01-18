@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Book;
 use App\Booklike;
 use DB;
+use Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -72,6 +73,9 @@ class LybraryController extends MainController
         }
         if($request->isMethod('post'))
         {
+            if(Gate::denies('add',new Book)){
+                return 'notadded';
+            }
             $rules = [
                 'book_name' => 'required',
                 'author_name' => 'required',

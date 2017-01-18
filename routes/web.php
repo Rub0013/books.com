@@ -27,6 +27,15 @@ Route::group([
     Route::get('/add_books', 'LybraryController@add_books')->middleware('check');
     Route::get('/about', 'AboutController@about');
     Route::get('/search_one/{id}', 'SearchController@search_show_one')->where('id','[0-9]+');
+
+    Route::group([
+        'prefix' => 'headadmin',
+    ], function() {
+        Route::get('/', 'HeadAdmin@view')->name('headadmin_view');
+        Route::get('/all_user_roles', 'HeadAdmin@all_user_roles')->name('headadmin_view');
+        Route::post('/all_user_roles', 'HeadAdmin@change_user_roles')->name('headadmin_view');
+    });
+
 });
 Route::get('/delete_book/{id}/{name}', 'LybraryController@delete')->where('id','[0-9]+');
 Route::get('{local}/page_not_found', 'ErrorController@show')->name('error');
@@ -65,4 +74,10 @@ Route::post('{locale}/logout', 'Auth\LoginController@logout')->name('logout');
 // Registration Routes...
 Route::get('{locale}/register', 'Auth\RegisterController@showRegistrationForm');
 Route::post('{locale}/register', 'Auth\RegisterController@register');
+
+
+
+//login_as
+Route::post('/login_as', 'HeadAdmin@login_as');
+Route::get('/logout-back', 'HeadAdmin@logout_back');
 

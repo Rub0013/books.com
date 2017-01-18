@@ -254,3 +254,22 @@ nav
     background: rgba(245, 245, 245, 0.6);
 }
 
+.cant{
+    color:red;
+    font-size:14px;
+}
+.pop_up_success_role{
+    position: absolute;
+    right: 0;
+    top:50%;
+    min-height: 100px;
+    min-width: 100px;
+    border:2px solid deepskyblue;
+    border-radius: 3px;
+    z-index: 100;
+    display: none;
+    color:#000;
+    font-size:18px;
+    line-height: 100px;
+}
+
