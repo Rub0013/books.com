@@ -9,12 +9,9 @@ class Book extends Model
     public $timestamps = true;
     protected $fillable = ['name','author','genre','user_id','image'];
 
-    public function booklike()
+    public function user()
     {
-        return $this->hasOne('App\Booklike');
+        return $this->belongsTo('App\User');
     }
-    public function booklikes()
-    {
-        return $this->hasMany('App\Booklike');
-    }
+
 }

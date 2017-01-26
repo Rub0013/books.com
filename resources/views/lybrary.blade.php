@@ -162,7 +162,7 @@
                     $('#search_show').slideUp("slow");
                 }
             });
-            $(document).on( "click", "div.likes > .button", function() {
+             $(document).on( "click", "div.likes > .button", function() {
                 var id_user=$('.users_id').val();
                 var id_book=$(this).next().val();
                 var like_button = $(this);

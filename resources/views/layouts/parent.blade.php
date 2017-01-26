@@ -7,6 +7,7 @@
     <script src="/js/jquery-3.1.0.min.js"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Books</title>
+    <link href="/css/font-awesome/css/font-awesome.min.css" rel="stylesheet">
     <link href="/fullcalendar/fullcalendar.css" rel="stylesheet">
     <link href="/css/jquery-ui.css" rel="stylesheet">
     <link href="/css/app.css" rel="stylesheet">

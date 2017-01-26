@@ -12,13 +12,14 @@ use Auth;
 use Exception;
 use App\Chat;
 use Illuminate\Support\Facades\App;
+use PHPUnit_Runner_Version;
 
 class TestController extends MainController
 {
   public function testing(Request $request)
   {
-      $url = $request->url();
-      echo $url;
+    
+
   }
 }
 

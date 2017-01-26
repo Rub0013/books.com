@@ -32,6 +32,6 @@ class CreateBooksTable extends Migration
      */
     public function down()
     {
-        Schema::drop('addbooks');
+        Schema::drop('books');
     }
 }
