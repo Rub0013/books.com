@@ -86,6 +86,13 @@
                                        {{ csrf_field() }}
                                    </form>
                                </li>
+                               @if(session('general_id'))
+                               <li>
+                                   <a href="{{ url('/logout-back') }}">
+                                       Logout-Back
+                                   </a>
+                               </li>
+                                   @endif
                            </ul>
                        </li>
                    @endif
@@ -93,8 +100,7 @@
            </div>
        </nav>
        @show
-       @section('content')
-       @show
+       @yield('content')
     </div>
 <!-- Scripts -->
     <script src="/js/app.js"></script>
@@ -102,6 +108,8 @@
         <script src="/js/main.js"></script>
         <script src="/fullcalendar/lib/moment.min.js"></script>
         <script src="/fullcalendar/fullcalendar.js"></script>
+        <script src="https://cdn.datatables.net/1.10.13/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
     @endif
 </body>
 </html>

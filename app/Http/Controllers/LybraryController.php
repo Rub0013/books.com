@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Book;
 use App\Booklike;
 use DB;
+use Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -65,6 +66,7 @@ class LybraryController extends MainController
     }
     public function add_books(Request $request)
     {
+
         $lang = new LanguageController();
         if($request->isMethod('get'))
         {
@@ -72,21 +74,27 @@ class LybraryController extends MainController
         }
         if($request->isMethod('post'))
         {
+            if(Gate::denies('add',new Book)){
+                return 'notadded';
+            }
             $rules = [
                 'book_name' => 'required',
                 'author_name' => 'required',
                 'genre' => 'required',
                 'user_id' => 'required',
                 'image' => 'required',
+                'price' => 'required|integer',
             ];
             $this->validate($request, $rules);
             $filename = time().'.'.$request['image']->getClientOriginalExtension();
             Storage::disk('public')->put($filename,File::get($request['image']));
+
             Book::create([
                 'name' => $request['book_name'],
                 'author' => $request['author_name'],
                 'genre' => $request['genre'],
                 'user_id' => $request['user_id'],
+                'price' => $request['price'],
                 'image' => $filename
             ]);
             return 'added';

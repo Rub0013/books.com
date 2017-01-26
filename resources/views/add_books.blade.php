@@ -14,6 +14,11 @@
         <div class="issues"></div>
     </div>
     <div class="main_div">
+        @if(isset($messages))
+        @foreach($messages as $message)
+            $message;
+            @endforeach
+        @endif
         <div class="form">
             <label>
                 <p>Name of the book</p>
@@ -26,6 +31,10 @@
             <label>
                 <p>Genre</p>
                 <input onkeyup="" id="genre" value="">
+            </label>
+            <label>
+                <p>Price</p>
+                <input onkeyup="" id="price" value="">
             </label>
             <input id="hidden" type="text" value="{{ Auth::user()->id }}">
             <label>
@@ -41,6 +50,7 @@
                 var book_name = $("#book_name").val();
                 var author_name = $("#author_name").val();
                 var genre = $("#genre").val();
+                var price = $("#price").val();
                 var user_id = $("#hidden").val();
                 var file = document.getElementById('book_image').files[0];
                 var errors = [];
@@ -68,6 +78,7 @@
                     formData.append('author_name',author_name);
                     formData.append('genre',genre);
                     formData.append('user_id',user_id);
+                    formData.append('price',price);
                     formData.append('image',file);
                     $.ajax({
                         type:'post',
@@ -89,6 +100,9 @@
                                     location.assign('http://books.com/{{App::getLocale()}}/lybrary');
                                 }
                                 setTimeout(l_href,1500);
+                            } if(answer=='notadded'){
+                                $('.issues').html('You have no such permission');
+                                $('.issues').css({'background':'red','visibility':'visible','color':'rgb(255, 255, 255)'});
                             }
                         }
                     });
