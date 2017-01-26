@@ -66,6 +66,7 @@ class LybraryController extends MainController
     }
     public function add_books(Request $request)
     {
+
         $lang = new LanguageController();
         if($request->isMethod('get'))
         {
@@ -82,15 +83,18 @@ class LybraryController extends MainController
                 'genre' => 'required',
                 'user_id' => 'required',
                 'image' => 'required',
+                'price' => 'required|integer',
             ];
             $this->validate($request, $rules);
             $filename = time().'.'.$request['image']->getClientOriginalExtension();
             Storage::disk('public')->put($filename,File::get($request['image']));
+
             Book::create([
                 'name' => $request['book_name'],
                 'author' => $request['author_name'],
                 'genre' => $request['genre'],
                 'user_id' => $request['user_id'],
+                'price' => $request['price'],
                 'image' => $filename
             ]);
             return 'added';

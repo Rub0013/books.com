@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Book extends Model
 {
     public $timestamps = true;
-    protected $fillable = ['name','author','genre','user_id','image'];
+    protected $fillable = ['name','author','genre','user_id','image','price'];
 
     public function booklike()
     {

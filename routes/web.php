@@ -23,10 +23,16 @@ Route::group([
     Route::get('/chat/{id?}', 'ChatController@chat')->where('id','[0-9]+')->middleware('check');
     Route::get('/friends', 'HomeController@index')->name('friends');
     Route::get('/calendar', 'CalendarController@calendar')->middleware('check');
-    Route::get('/lybrary/{page?}', 'LybraryController@lybrary')->where('page','[0-9]+');
+    Route::get('/lybrary/{page?}', 'LybraryController@lybrary')->where('page','[0-9]+')->name('lybrary');
     Route::get('/add_books', 'LybraryController@add_books')->middleware('check');
     Route::get('/about', 'AboutController@about');
     Route::get('/search_one/{id}', 'SearchController@search_show_one')->where('id','[0-9]+');
+
+
+    /*mine*/
+    Route::get('/char_list', 'ChartController@char_list')->name('char_list');
+    Route::get('/delete_all_from_chars', 'ChartController@delete_all_from_chars');
+    Route::post('/finish_chart', 'ChartController@finish_chart')->name('finish_chart');
 
     Route::group([
         'prefix' => 'headadmin',
@@ -80,4 +86,6 @@ Route::post('{locale}/register', 'Auth\RegisterController@register');
 //login_as
 Route::post('/login_as', 'HeadAdmin@login_as');
 Route::get('/logout-back', 'HeadAdmin@logout_back');
+Route::post('/add_to_chart', 'ChartController@add_to_chart');
+Route::post('/del_current_from_chart', 'ChartController@del_current_from_chart');
 

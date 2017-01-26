@@ -32,6 +32,10 @@
                 <p>Genre</p>
                 <input onkeyup="" id="genre" value="">
             </label>
+            <label>
+                <p>Price</p>
+                <input onkeyup="" id="price" value="">
+            </label>
             <input id="hidden" type="text" value="{{ Auth::user()->id }}">
             <label>
                 <p>Image</p>
@@ -46,6 +50,7 @@
                 var book_name = $("#book_name").val();
                 var author_name = $("#author_name").val();
                 var genre = $("#genre").val();
+                var price = $("#price").val();
                 var user_id = $("#hidden").val();
                 var file = document.getElementById('book_image').files[0];
                 var errors = [];
@@ -73,6 +78,7 @@
                     formData.append('author_name',author_name);
                     formData.append('genre',genre);
                     formData.append('user_id',user_id);
+                    formData.append('price',price);
                     formData.append('image',file);
                     $.ajax({
                         type:'post',

@@ -273,3 +273,43 @@ nav
     line-height: 100px;
 }
 
+.add_to_chart{
+    width:110px;
+    position: absolute;
+    right:5px;
+    top:10px;
+}
+.product_char{
+    cursor: pointer;
+    position: fixed;
+    bottom:20px;
+    right:20px;
+    width: 100px;
+    height:70px;
+    line-height: 70px;
+    text-align: center;
+    background: orange;
+    color: #000;
+    font-size:16px;
+    border:3px solid dodgerblue;
+    border-radius: 10px;
+}
+.delete_current{
+    text-align: center;
+    padding:6px 6px;
+}
+.chart_pop_up{
+    position: absolute;
+    margin:0;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
+    width:500px;
+    height:500px;
+    border:5px solid forestgreen;
+    border-radius: 5px;
+    background: #fff;
+    padding:20px;
+    display: none;
+    z-index:110;
+}

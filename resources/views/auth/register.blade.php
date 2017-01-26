@@ -9,13 +9,14 @@
 @endsection
 
 @section('content')
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 <div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Register</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url(App::getLocale().'/register') }}">
+                    <form class="form-horizontal" role="form" id="form_register" method="POST" action="{{ url(App::getLocale().'/register') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -81,7 +82,18 @@
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
+                        {{--CAPTCHA--}}
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
 
+                                <div class="g-recaptcha" data-sitekey="6LcE9xIUAAAAABwyncOGK5c9St_mdFwyEqQ4RY8P"></div>
+                                @if ($errors->has('g-recaptcha-response'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('g-recaptcha-response') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
@@ -95,4 +107,23 @@
         </div>
     </div>
 </div>
+
+
+    <script>
+        $( document ).ready(function() {
+
+
+//            /************** RECAPTCHA *************/
+            $('#form_register').submit(function(event){
+                var verify = grecaptcha.getResponse();
+                if(verify.length == 0){
+                    event.preventDefault();
+                }
+            })
+
+
+
+
+        });
+    </script>
 @endsection

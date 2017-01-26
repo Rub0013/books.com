@@ -17,6 +17,13 @@
 @endsection
 
 @section('content')
+<?php
+        var_dump(Session()->all());
+        ?>
+
+@if(session()->has('success'))
+    {{Session('success')}}
+    @endif
     <div class="main_books">
         @if(Auth::check())
             <div id="parent_book_update">
@@ -49,9 +56,11 @@
         @endif
         <div class="show_books">
             @for($i=0;$i<count($books);$i++)
-                <div id="current_book_{{ $books[$i]['id'] }}">
+                <div id="{{ $books[$i]['id'] }}" class="current_book">
+
                     <img  width='200' height='300' src="{{  url('/') }}/images/add_books/books_images/{{ $books[$i]['image'] }}">
                     <div>
+                        <button class="btn btn-info add_to_chart">Add - <span class="price_int">{{$books[$i]['price']}}</span></button>
                         <b class="book_name">{{ $books[$i]['name'] }}</b>
                         <p class="book_author">{{ $books[$i]['author'] }}</p>
                         <p class="book_genre">{{ $books[$i]['genre'] }}</p>
@@ -92,6 +101,14 @@
                     <img src='{{  url('/') }}/images/add_books/symbols/right-arrow.png'>
                 </a>
             </div>
+        @endif
+
+        @if(session('prod_id'))
+        <a href="{{  url(App::getLocale().'/char_list') }}" class="product_char">
+            <span>Chart - </span>
+            <span class="counts">{{session('prod_chart_quantity')}}</span>
+
+        </a>
         @endif
     </div>
     <script>
@@ -261,6 +278,25 @@
             $(document).on( "click", "#cancel_update_button", function() {
                 $('#parent_book_update').fadeOut(300);
             });
+
+            $(document).on( "click", ".add_to_chart", function() {
+                var id = $(this).parents('.current_book').attr('id');
+                $.ajax({
+                    type:'post',
+                    url:'/add_to_chart',
+                    data: {
+                        id:id,
+                    },
+                    headers: {'X-CSRF-TOKEN': $("meta[name='csrf-token']").attr('content')},
+                    success:function(data)
+                    {
+                        window.location.reload();
+                    }
+                });
+            });
+
+
+
         });
     </script>
 @endsection
