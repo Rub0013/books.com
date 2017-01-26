@@ -7,6 +7,7 @@ use DB;
 use Auth;
 use App\Friend;
 use App\User;
+use App\Role;
 
 class HomeController extends MainController
 {
@@ -16,6 +17,7 @@ class HomeController extends MainController
     }
     public function index()
     {
+
         $lang = new LanguageController();
         $logged = User::find(Auth::user()->id);
         $logged->online = 1;

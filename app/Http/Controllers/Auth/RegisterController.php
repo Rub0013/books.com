@@ -8,6 +8,7 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use App\Http\Controllers\LanguageController;
+use GuzzleHttp\Client;
 
 class RegisterController extends Controller
 {
@@ -58,6 +59,7 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
+            'g-recaptcha-response'=>'required'
         ]);
     }
 
@@ -69,11 +71,33 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'birth_date' => $data['birth_date'],
-            'password' => bcrypt($data['password']),
-        ]);
+        $token = $data['g-recaptcha-response'];
+        if($token){
+            $client = new Client();
+            $response =  $client->post('https://www.google.com/recaptcha/api/siteverify',[
+                'form_params' =>[
+                    'secretn' =>'6LcE9xIUAAAAAGZDmUyALqxSpMik_5Igh0RKD_CZ',
+                    'response'=> $token,
+                ]
+            ]);
+
+            $result = json_decode($response->getBody()->getContents());
+
+            if($result->success){
+                return User::create([
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'birth_date' => $data['birth_date'],
+                    'password' => bcrypt($data['password']),
+                ]);
+            }else{
+//                $response->error_code;
+                return redirect()->back();
+
+            }
+
+        }else{
+            return redirect()->back();
+        }
     }
 }
