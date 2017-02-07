@@ -11,20 +11,9 @@
         "intervention/image": "^2.3",
         "laravel/socialite": "^2.0",
         "guzzlehttp/guzzle": "~6.0",
-<<<<<<< HEAD
         "barryvdh/laravel-dompdf": "^0.7.0",
         "phpunit/phpunit": "~5.0",
-        "barryvdh/laravel-dompdf": "^0.7.0",
         "stripe/stripe-php": "4.*"
-=======
-<<<<<<< HEAD
-        "barryvdh/laravel-dompdf": "^0.7.0"
-=======
-        "phpunit/phpunit": "~5.0",
-        "barryvdh/laravel-dompdf": "^0.7.0",
-        "stripe/stripe-php": "4.*"
->>>>>>> art
->>>>>>> 28502682e75981b6962aeae2d0bd99f5f401c445
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",

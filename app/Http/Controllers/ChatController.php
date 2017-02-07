@@ -54,7 +54,7 @@ class ChatController extends MainController
             {
                 return Redirect::route('error', array('local' => App::getLocale()));
             }
-            $friends = DB::table('users')->select('users.id','name','answer','users.online')
+            $friends = User::select('users.id','name','answer','users.online')
             ->join('friends', function($join)
             {
                 $join->on('users.id', '=', 'request_from_id')
@@ -80,7 +80,7 @@ class ChatController extends MainController
         }
         else
         {
-            $friends = DB::table('users')->select('users.id','name','answer','users.online')
+            $friends = User::select('users.id','name','answer','users.online')
                 ->join('friends', function($join)
                 {
                     $join->on('users.id', '=', 'request_from_id')

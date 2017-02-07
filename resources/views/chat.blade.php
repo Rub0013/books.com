@@ -22,18 +22,18 @@
             <h1>Choose friend!</h1>
         </div>
         <div id="friends">
-            @for($i=0;$i<count($friends);$i++)
-                <div id='friend_{{ $friends[$i]['id'] }}' class="friend">
-                    <a href="{{ url(App::getLocale().'/chat').'/'.$friends[$i]['id'] }}">{{ $friends[$i]['name'] }}</a>
-                    @if($friends[$i]['online']==0)
-                     <div class="online" style="background:red"></div>
+            @foreach($friends as $friend)
+                <div id='friend_{{ $friend['id'] }}' class="friend">
+                    <a href="{{ url(App::getLocale().'/chat').'/'.$friend['id'] }}">{{ $friend['name'] }}</a>
+                    @if($friend->isOnline())
+                        <div class="online" style="background:green"></div>
                     @else
-                     <div class="online" style="background:green"></div>
+                        <div class="online" style="background:red"></div>
                     @endif
-                    <input class="fore_note" type="text" value="{{ $friends[$i]['id'] }}">
+                    <input class="fore_note" type="text" value="{{ $friend['id'] }}">
                     <p class="notifications"></p>
                 </div>
-            @endfor
+            @endforeach
         </div>
     </div>
     <script>
@@ -154,7 +154,7 @@
                     }
                 });
             }
-            setInterval(current_friend_notes, 2000);
+//            setInterval(current_friend_notes, 2000);
             function online(){
                 var data1 = true;
                 $.ajax({
@@ -165,10 +165,9 @@
                     headers: {'X-CSRF-TOKEN': $("meta[name='csrf-token']").attr('content')},
                     success: function (answer)
                     {
-                        console.log(answer[0]['online']);
                         for(var i=0;i<answer.length;i++)
                         {
-                            if(answer[i]['online']==0)
+                            if(answer[i]['online']===false)
                             {
                                 $('#friends').find('#friend_'+answer[i]['id']).find('.online').css({'background':'red'});
                             }
@@ -180,7 +179,7 @@
                     }
                 });
             }
-            setInterval(online, 5000);
+            setInterval(online, 3000);
         });
     </script>
 @endsection

@@ -128,18 +128,18 @@
         <div>
             <div id="friends">
                 <h3 id='no_such_friends'>No such friends!</h3>
-                @for($i=0;$i<count($friends);$i++)
-                    <div id='friend_{{ $friends[$i]['id'] }}' class="friend">
-                        <a href="{{ url(App::getLocale().'/chat').'/'.$friends[$i]['id'] }}">{{ $friends[$i]['name'] }}</a>
-                        @if($friends[$i]['online']==0)
-                            <div class="online" style="background:red"></div>
-                        @else
+                @foreach($friends as $friend)
+                    <div id='friend_{{ $friend['id'] }}' class="friend">
+                        <a href="{{ url(App::getLocale().'/chat').'/'.$friend['id'] }}">{{ $friend['name'] }}</a>
+                        @if($friend->isOnline())
                             <div class="online" style="background:green"></div>
+                        @else
+                            <div class="online" style="background:red"></div>
                         @endif
-                        <input class="fore_note" type="text" value="{{ $friends[$i]['id'] }}">
+                        <input class="fore_note" type="text" value="{{ $friend['id'] }}">
                         <p class="notifications"></p>
                     </div>
-                @endfor
+                @endforeach
             </div>
             <input id="friend_list_search"  type="search" placeholder="Search in friend list...">
         </div>
@@ -407,7 +407,7 @@
                     {
                         for(var i=0;i<answer.length;i++)
                         {
-                            if(answer[i]['online']==0)
+                            if(answer[i]['online']===false)
                             {
                                 $('#friends').find('#friend_'+answer[i]['id']).find('.online').css({'background':'red'});
                             }
@@ -419,7 +419,7 @@
                     }
                 });
             }
-//            setInterval(online, 3000);
+            setInterval(online, 4000);
             $(document).on( "click", ".delete_message", function() {
                 var chat_id = $(this).next().val();
                 $.ajax({

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Support\Facades\Cache;
 
 class User extends Authenticatable
 {
@@ -36,5 +37,8 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Role','role_user',"user_id",'role_id');
     }
-
+    public function isOnline()
+    {
+        return Cache::has('user-is-online-' . $this->id);
+    }
 }

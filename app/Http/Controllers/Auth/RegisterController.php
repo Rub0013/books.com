@@ -59,24 +59,30 @@ class RegisterController extends Controller
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
             'password' => 'required|min:6|confirmed',
-            'g-recaptcha-response'=>'required'
+//            'g-recaptcha-response'=>'required'
         ]);
     }
 
     /**
-     * Create a new user instance after a valid registration.
+     * Create a new user instance aft er avalid registration.
      *
      * @param  array  $data
      * @return User
      */
     protected function create(array $data)
     {
+//        return User::create([
+//            'name' => $data['name'],
+//            'email' => $data['email'],
+//            'birth_date' => $data['birth_date'],
+//            'password' => bcrypt($data['password']),
+//        ]);
         $token = $data['g-recaptcha-response'];
         if($token){
             $client = new Client();
             $response =  $client->post('https://www.google.com/recaptcha/api/siteverify',[
                 'form_params' =>[
-                    'secretn' =>'6LcE9xIUAAAAAGZDmUyALqxSpMik_5Igh0RKD_CZ',
+                    'secret' =>'6LcE9xIUAAAAAGZDmUyALqxSpMik_5Igh0RKD_CZ',
                     'response'=> $token,
                 ]
             ]);

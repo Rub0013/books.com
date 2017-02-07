@@ -83,7 +83,7 @@ class FriendsController extends MainController
     }
     public function friends_online()
     {
-        $friends = DB::table('users')->select('users.id','users.online')
+        $friends = User::select('users.id','users.online')
             ->join('friends', function($join)
             {
                 $join->on('users.id', '=', 'request_from_id')
@@ -94,7 +94,15 @@ class FriendsController extends MainController
                     ->where('answer','=',1);
             })
             ->get();
-        return $friends;
+        $arr = [];
+        foreach ($friends as $friend)
+        {
+            $arr[] = [
+                'id'=>$friend['id'],
+                'online'=>$friend->isOnline()
+            ];
+        }
+        return $arr;
     }
     public function search_in_friend_list(Request $request)
     {

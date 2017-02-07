@@ -13,10 +13,6 @@ use Illuminate\Support\Facades\App;
 class LoginController extends Controller
 {
     public function logout(Request $request) {
-        $currentuser = Auth::user()->id;
-        DB::table('users')
-            ->where('id', $currentuser)
-            ->update(['online' => 0]);
         $this->guard()->logout();
         $request->session()->flush();
         $request->session()->regenerate();

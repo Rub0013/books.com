@@ -19,9 +19,6 @@ class HomeController extends MainController
     {
 
         $lang = new LanguageController();
-        $logged = User::find(Auth::user()->id);
-        $logged->online = 1;
-        $logged->save();
         $friends = DB::table('users')->select('users.id','users.online','name','answer','friends.id as request_id')
             ->join('friends', function($join)
             {
